@@ -1,6 +1,6 @@
 # Overview
 
-This project will help me broaden my knowledge of other IDEs, languages, and data communcation types.
+This project will help me broaden my knowledge of other IDEs, languages, and data communication types.
 
 This is a Church of Jesus-Christ of Latter-day Saints primary class helper application. It will track students prayers and articles of faith learning/completion. It will also be able to be data-synced with other android devices using NFC taps.
 
@@ -17,7 +17,7 @@ As a primary teacher with a desire to be fair and equal and to my primary studen
 * Data
   * SQLite using Android Room
 * Communication
-  * NFC (Near-field Communcation)  
+  * NFC (Near-field Communication)  
 This application will be best suited to be developed and worked on using JetBrains Android Studio
 
 # Useful Websites
