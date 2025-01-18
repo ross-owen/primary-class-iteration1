@@ -9,7 +9,7 @@ import androidx.room.Update
 
 @Dao
 interface StudentDao {
-    @Query("SELECT * FROM students ORDER BY firstName ASC")
+    @Query("SELECT * FROM students ORDER BY firstName, lastName ASC")
     fun list(): LiveData<List<Student>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

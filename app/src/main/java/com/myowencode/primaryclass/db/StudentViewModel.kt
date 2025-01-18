@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StudentViewModel(application: Application): AndroidViewModel(application) {
-    private val students: LiveData<List<Student>>
+    val students: LiveData<List<Student>>
     private val repository: StudentRepository
     
     init {

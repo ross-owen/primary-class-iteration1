@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -66,28 +69,13 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Navigation Component
-//    implementation(libs.androidx.navigation.fragment.ktx)
-//    implementation(libs.androidx.navigation.ui.ktx)
-
-    // Room components
     implementation(libs.androidx.room.runtime)
-//    kapt("androidx.room:room-compiler:2.2.5")
-//    implementation(libs.androidx.room.ktx)
-//    androidTestImplementation(libs.androidx.room.testing)
+    ksp(libs.androidx.room.room.compiler)
+    annotationProcessor(libs.androidx.room.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
-    // Lifecycle components
-//    implementation(libs.lifecycle.extensions)
-//    implementation(libs.androidx.lifecycle.common.java8)
-//    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.runtime.livedata)
 
-    // Kotlin components
-//    implementation(libs.kotlin.stdlib.jdk7)
-//    api(libs.kotlinx.coroutines.core)
-//    api(libs.kotlinx.coroutines.android)
-
-//    annotationProcessor(libs.androidx.room.room.compiler)
-//
-//    implementation(libs.androidx.runtime.livedata)
-
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }

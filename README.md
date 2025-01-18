@@ -6,7 +6,7 @@ This is a Church of Jesus-Christ of Latter-day Saints primary class helper appli
 
 As a primary teacher with a desire to be fair and equal and to my primary students, I want to track prayers and Articles of Faith completion. I also want to be able to keep in sync with my team teacher as well as multiple devices. This will allow period absenses with either of us and be able to always have the latest data shared between devices
 
-[Software Demo Video](https://youtu.be/m_0hweGCUBg)
+[Iteration 1 Demo Video](https://youtu.be/m_0hweGCUBg)
 
 # Development Environment
 
