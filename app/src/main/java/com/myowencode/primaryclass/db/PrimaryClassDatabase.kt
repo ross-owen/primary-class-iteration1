@@ -9,24 +9,25 @@ import androidx.room.TypeConverters
 @Database(entities = [Student::class], version = 1, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class PrimaryClassDatabase : RoomDatabase() {
+
     companion object {
-        const val MALE : String = "male"
-        const val FEMALE : String = "female"
-        const val NAME : String = "primary_class_database"
+        const val GENDER_MALE : String = "male"
+        const val GENDER_FEMALE : String = "female"
+        private const val DB_NAME : String = "primary_class_database"
 
         @Volatile
         private var INSTANCE: PrimaryClassDatabase?  = null
         
         fun getDatabase(context: Context): PrimaryClassDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
+            val i = INSTANCE
+            if (i != null) {
+                return i
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     PrimaryClassDatabase::class.java,
-                    NAME
+                    DB_NAME
                 ).build()
                 INSTANCE = instance
                 return instance

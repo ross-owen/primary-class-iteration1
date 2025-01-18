@@ -8,24 +8,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StudentViewModel(application: Application): AndroidViewModel(application) {
-    val studentList: LiveData<List<Student>>
-    private val repository: PrimaryClassRepository
+    private val students: LiveData<List<Student>>
+    private val repository: StudentRepository
     
     init {
         val studentDao = PrimaryClassDatabase.getDatabase(application).getStudentDao()
-        repository = PrimaryClassRepository(studentDao)
-        studentList = repository.students
+        repository = StudentRepository(studentDao)
+        students = repository.list
     }
     
-    fun createStudent(student: Student) {
+    fun upsert(student: Student) {
         viewModelScope.launch(Dispatchers.IO) { 
-            repository.createStudent(student)
+            repository.upsert(student)
         }
     }
 
-    fun updateStudent(student: Student) {
+    fun delete(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateStudent(student)
+            repository.delete(id)
         }
     }
 }

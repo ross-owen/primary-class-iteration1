@@ -9,15 +9,15 @@ import java.util.Date
 @Entity(tableName = "students")
 data class Student(
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 1000,
+    var id: Int,
     var firstName: String,
-    var lastName: String?,
-    var gender: String = PrimaryClassDatabase.MALE,
+    var lastName: String,
+    var gender: String = PrimaryClassDatabase.GENDER_MALE,
     var birthDate: Date?
 
 ) {
     fun isMale(): Boolean {
-        return gender.equals(PrimaryClassDatabase.MALE)
+        return gender.equals(PrimaryClassDatabase.GENDER_MALE)
     }
 
     fun getFullName(): String {
