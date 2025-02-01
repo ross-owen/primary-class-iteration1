@@ -74,7 +74,7 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
             student = createStudent("Tyrell", "Owen", PrimaryClassDatabase.GENDER_MALE, 8, 5)
             Log.d(logName, "Student created. New id is ${student.id}")
 
-            // list the students - should contain 2
+            // list the students - should contain 3
             logStudents(dao.getAll())
         }
     }
