@@ -1,6 +1,5 @@
 package com.myowencode.primaryclass.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -11,7 +10,7 @@ import androidx.room.Update
 @Dao
 interface StudentDao {
     @Query("SELECT * FROM students ORDER BY firstName, lastName ASC")
-    fun list(): LiveData<List<Student>>
+    fun getAll(): List<Student>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun create(student: Student) : Long

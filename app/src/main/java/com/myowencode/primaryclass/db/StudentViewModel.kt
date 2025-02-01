@@ -13,13 +13,11 @@ import java.util.Date
 class StudentViewModel(application: Application) : AndroidViewModel(application) {
     private val logName: String = "KotlinDemo"
 
-    val students: LiveData<List<Student>>
     private val repository: StudentRepository
     private val dao = PrimaryClassDatabase.getDatabase(application).getStudentDao()
 
     init {
         repository = StudentRepository(dao)
-        students = repository.list
     }
 
     fun upsert(student: Student) {
@@ -58,25 +56,26 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
             dao.deleteAll()
 
             // list all students - should be empty
-            logStudents(dao.list().value)
+            logStudents(dao.getAll())
 
             // create a student
             var student = createStudent("Ross", "Owen", PrimaryClassDatabase.GENDER_MALE, 1, 19)
             Log.d(logName, "Student created. New id is ${student.id}")
-            Log.d(logName, "")
 
             // find the student just created
             student = dao.findById(student.id)
-            Log.d(logName, "Found student: ${student.firstName} ${student.lastName}")
-            Log.d(logName, "")
+            Log.d(logName, "Found student: ${student.getFullName()}")
 
             // create another student
             student = createStudent("Lisa", "Masters", PrimaryClassDatabase.GENDER_FEMALE, 10, 3)
             Log.d(logName, "Student created. New id is ${student.id}")
-            Log.d(logName, "")
+
+            // create another student
+            student = createStudent("Tyrell", "Owen", PrimaryClassDatabase.GENDER_MALE, 8, 5)
+            Log.d(logName, "Student created. New id is ${student.id}")
 
             // list the students - should contain 2
-            logStudents(dao.list().value)
+            logStudents(dao.getAll())
         }
     }
 
@@ -100,13 +99,12 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
         return student
     }
 
-    private fun logStudents(students: List<Student>?) {
+    private fun logStudents(students: List<Student>) {
         Log.d(logName, "STUDENT LIST")
         Log.d(logName, "------------")
-        students?.forEach { student ->
-            Log.d(logName, "${student.firstName} ${student.lastName}")
+        students.forEach { student ->
+            Log.d(logName, student.getFullName())
         }
         Log.d(logName, "============")
-        Log.d(logName, "")
     }
 }
