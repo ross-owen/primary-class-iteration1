@@ -2,6 +2,7 @@ package com.myowencode.primaryclass.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -13,11 +14,17 @@ interface StudentDao {
     fun list(): LiveData<List<Student>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun create(student: Student)
+    suspend fun create(student: Student) : Long
 
     @Update
-    fun update(student: Student)
+    suspend fun update(student: Student)
 
-    @Query("DELETE FROM students WHERE id = :id")
-    fun delete(id: Int)
+    @Delete
+    suspend fun delete(student: Student)
+
+    @Query("DELETE FROM students")
+    suspend fun deleteAll()
+
+    @Query("SELECT * FROM students WHERE id = :id")
+    fun findById(id: Int): Student
 }

@@ -13,7 +13,7 @@ abstract class PrimaryClassDatabase : RoomDatabase() {
     companion object {
         const val GENDER_MALE : String = "male"
         const val GENDER_FEMALE : String = "female"
-        private const val DB_NAME : String = "primary_class_database"
+        const val DB_NAME : String = "primary_class_database"
 
         @Volatile
         private var INSTANCE: PrimaryClassDatabase?  = null
