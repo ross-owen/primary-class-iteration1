@@ -1,6 +1,6 @@
 # Overview
 
-This project will help me broaden my knowledge of other IDEs, languages, and data communication types.
+This project will help me broaden my knowledge of other IDEs, languages, and data communication types. This first module is to become familiar with Kotin. This will be done by learning Android Room framework to create and establish abstract layering of the Database classes.
 
 This is a Church of Jesus-Christ of Latter-day Saints primary class helper application. It will track students prayers and articles of faith learning/completion. It will also be able to be data-synced with other android devices using NFC taps.
 
